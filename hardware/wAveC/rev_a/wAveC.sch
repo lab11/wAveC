@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -5265,6 +5265,85 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="connector">
+<description>&lt;b&gt;LAB11&lt;/b&gt; - Connectors for various cable types.</description>
+<packages>
+<package name="MOLEX-BNC-73100-0105">
+<pad name="GND1" x="-3.8" y="-3.9" drill="1.8"/>
+<pad name="GND2" x="3.8" y="-3.9" drill="1.8"/>
+<pad name="SIGNAL" x="0" y="3.9" drill="0.8"/>
+<wire x1="-4.825" y1="-8.5" x2="4.825" y2="-8.5" width="0.127" layer="21"/>
+<wire x1="4.825" y1="-8.5" x2="4.825" y2="0.3" width="0.127" layer="21"/>
+<wire x1="4.825" y1="0.3" x2="0.75" y2="0.3" width="0.127" layer="21"/>
+<wire x1="0.75" y1="0.3" x2="-0.75" y2="0.3" width="0.127" layer="21"/>
+<wire x1="-0.75" y1="0.3" x2="-4.825" y2="0.3" width="0.127" layer="21"/>
+<wire x1="-4.825" y1="0.3" x2="-4.825" y2="-8.5" width="0.127" layer="21"/>
+<wire x1="-4.825" y1="-21.5" x2="4.825" y2="-21.5" width="0.127" layer="51"/>
+<wire x1="-4.825" y1="-21.5" x2="-4.825" y2="-8.5" width="0.127" layer="51"/>
+<wire x1="4.825" y1="-8.5" x2="4.825" y2="-21.5" width="0.127" layer="51"/>
+<wire x1="-0.75" y1="0.3" x2="-0.75" y2="1.5" width="0.127" layer="21"/>
+<wire x1="-0.75" y1="1.5" x2="-0.25" y2="1.5" width="0.127" layer="21"/>
+<wire x1="-0.25" y1="1.5" x2="0.25" y2="1.5" width="0.127" layer="21"/>
+<wire x1="0.25" y1="1.5" x2="0.75" y2="1.5" width="0.127" layer="21"/>
+<wire x1="0.75" y1="1.5" x2="0.75" y2="0.3" width="0.127" layer="21"/>
+<wire x1="-0.25" y1="1.5" x2="-0.25" y2="3.5" width="0.127" layer="21"/>
+<wire x1="-0.25" y1="3.5" x2="0.25" y2="3.5" width="0.127" layer="21"/>
+<wire x1="0.25" y1="3.5" x2="0.25" y2="1.5" width="0.127" layer="21"/>
+<text x="0" y="5" size="1.016" layer="25" font="vector" ratio="12" align="bottom-center">&gt;NAME</text>
+</package>
+</packages>
+<symbols>
+<symbol name="BNC">
+<pin name="SIGNAL" x="7.62" y="0" visible="off" length="short" rot="R180"/>
+<wire x1="5.08" y1="-1.27" x2="5.08" y2="1.27" width="0.254" layer="94"/>
+<wire x1="5.08" y1="1.27" x2="4.064" y2="1.27" width="0.254" layer="94"/>
+<wire x1="4.064" y1="1.27" x2="3.81" y2="1.27" width="0.254" layer="94"/>
+<wire x1="3.81" y1="1.27" x2="1.27" y2="1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="2.54" width="0.254" layer="94"/>
+<wire x1="1.27" y1="2.54" x2="-3.81" y2="2.54" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="2.54" x2="-3.81" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="-3.81" y1="-2.54" x2="1.27" y2="-2.54" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-2.54" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="-1.27" x2="2.54" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="2.54" y1="-1.27" x2="3.81" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="3.81" y1="-1.27" x2="4.064" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="4.064" y1="-1.27" x2="5.08" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="1.27" y1="1.27" x2="1.27" y2="-1.27" width="0.254" layer="94"/>
+<wire x1="3.81" y1="1.27" x2="3.81" y2="1.524" width="0.254" layer="94"/>
+<wire x1="3.81" y1="1.524" x2="4.064" y2="1.524" width="0.254" layer="94"/>
+<wire x1="4.064" y1="1.524" x2="4.064" y2="1.27" width="0.254" layer="94"/>
+<wire x1="3.81" y1="-1.27" x2="3.81" y2="-1.524" width="0.254" layer="94"/>
+<wire x1="3.81" y1="-1.524" x2="4.064" y2="-1.524" width="0.254" layer="94"/>
+<wire x1="4.064" y1="-1.524" x2="4.064" y2="-1.27" width="0.254" layer="94"/>
+<pin name="GND" x="7.62" y="-5.08" visible="off" length="short" rot="R180"/>
+<wire x1="5.08" y1="-5.08" x2="2.54" y2="-5.08" width="0.1524" layer="94"/>
+<wire x1="2.54" y1="-5.08" x2="2.54" y2="-1.27" width="0.1524" layer="94"/>
+<text x="-3.81" y="3.048" size="1.778" layer="95" ratio="12">&gt;NAME</text>
+<text x="-3.81" y="-4.826" size="1.778" layer="96" ratio="12">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="MOLEX_BNC_73100-0105" prefix="J">
+<description>CONN BNC JACK R/A 50 OHM PCB</description>
+<gates>
+<gate name="G$1" symbol="BNC" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="MOLEX-BNC-73100-0105">
+<connects>
+<connect gate="G$1" pin="GND" pad="GND1 GND2"/>
+<connect gate="G$1" pin="SIGNAL" pad="SIGNAL"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="DIGIKEY" value="WM5524-ND" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Brad Campbell"/>
@@ -5286,6 +5365,9 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="J1" library="ac" deviceset="WIRE_HOLE-14AWG" device=""/>
 <part name="J2" library="ac" deviceset="WIRE_HOLE-14AWG" device=""/>
+<part name="J3" library="connector" deviceset="MOLEX_BNC_73100-0105" device=""/>
+<part name="J4" library="connector" deviceset="MOLEX_BNC_73100-0105" device=""/>
+<part name="GND2" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5301,6 +5383,9 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <instance part="GND1" gate="1" x="111.76" y="106.68"/>
 <instance part="J1" gate="G$1" x="88.9" y="162.56" rot="MR0"/>
 <instance part="J2" gate="G$1" x="88.9" y="154.94" rot="MR0"/>
+<instance part="J3" gate="G$1" x="134.62" y="160.02"/>
+<instance part="J4" gate="G$1" x="134.62" y="144.78"/>
+<instance part="GND2" gate="1" x="144.78" y="149.86"/>
 </instances>
 <busses>
 </busses>
@@ -5314,6 +5399,11 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <junction x="104.14" y="121.92"/>
 <label x="111.76" y="121.92" size="1.27" layer="95" xref="yes"/>
 </segment>
+<segment>
+<pinref part="J3" gate="G$1" pin="SIGNAL"/>
+<wire x1="142.24" y1="160.02" x2="144.78" y2="160.02" width="0.1524" layer="91"/>
+<label x="144.78" y="160.02" size="1.27" layer="95" xref="yes"/>
+</segment>
 </net>
 <net name="GND" class="0">
 <segment>
@@ -5326,6 +5416,12 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <pinref part="R1" gate="G$1" pin="1"/>
 <junction x="104.14" y="111.76"/>
 </segment>
+<segment>
+<pinref part="J3" gate="G$1" pin="GND"/>
+<wire x1="142.24" y1="154.94" x2="144.78" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="154.94" x2="144.78" y2="152.4" width="0.1524" layer="91"/>
+<pinref part="GND2" gate="1" pin="GND"/>
+</segment>
 </net>
 <net name="PHASE" class="0">
 <segment>
@@ -5337,6 +5433,11 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <pinref part="J1" gate="G$1" pin="P$1"/>
 <wire x1="86.36" y1="162.56" x2="83.82" y2="162.56" width="0.1524" layer="91"/>
 <label x="83.82" y="162.56" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="J4" gate="G$1" pin="SIGNAL"/>
+<wire x1="142.24" y1="144.78" x2="144.78" y2="144.78" width="0.1524" layer="91"/>
+<label x="144.78" y="144.78" size="1.27" layer="95" xref="yes"/>
 </segment>
 </net>
 </nets>
