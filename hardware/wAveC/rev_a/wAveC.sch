@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="yes" altdistance="0.01" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="no" active="no"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -1767,6 +1767,9 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <wire x1="-4" y1="2" x2="4" y2="2" width="0.127" layer="51"/>
 <wire x1="4" y1="1" x2="-4" y2="1" width="0.127" layer="51"/>
 </package>
+<package name="WIRE_HOLE-14AWG">
+<pad name="P$1" x="0" y="0" drill="2.54" diameter="5.08" shape="octagon"/>
+</package>
 </packages>
 <symbols>
 <symbol name="CURRENT_TRANSFORMER">
@@ -1788,6 +1791,12 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <pin name="1" x="5.08" y="5.08" visible="off" length="point"/>
 <pin name="2" x="5.08" y="-5.08" visible="off" length="point"/>
 </symbol>
+<symbol name="WIRE_HOLE">
+<circle x="0" y="0" radius="1.27" width="0.254" layer="94"/>
+<pin name="P$1" x="2.54" y="0" visible="off" length="short" rot="R180"/>
+<text x="0" y="2.54" size="1.27" layer="95" ratio="12">&gt;NAME</text>
+<text x="0" y="-3.81" size="1.27" layer="96" ratio="12">&gt;VALUE</text>
+</symbol>
 </symbols>
 <devicesets>
 <deviceset name="CR8348" prefix="CT">
@@ -1805,6 +1814,22 @@ To use, set global attributes TITLE, AUTHOR and REV in your schematic.</descript
 <technology name="">
 <attribute name="DIGIKEY" value="582-1161-ND" constant="no"/>
 </technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="WIRE_HOLE-14AWG" prefix="J">
+<description>Solder point for 14AWG wire</description>
+<gates>
+<gate name="G$1" symbol="WIRE_HOLE" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="WIRE_HOLE-14AWG">
+<connects>
+<connect gate="G$1" pin="P$1" pad="P$1"/>
+</connects>
+<technologies>
+<technology name=""/>
 </technologies>
 </device>
 </devices>
@@ -5207,6 +5232,39 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="supply1">
+<description>&lt;b&gt;Supply Symbols&lt;/b&gt;&lt;p&gt;
+ GND, VCC, 0V, +5V, -5V, etc.&lt;p&gt;
+ Please keep in mind, that these devices are necessary for the
+ automatic wiring of the supply signals.&lt;p&gt;
+ The pin name defined in the symbol is identical to the net which is to be wired automatically.&lt;p&gt;
+ In this library the device names are the same as the pin names of the symbols, therefore the correct signal names appear next to the supply symbols in the schematic.&lt;p&gt;
+ &lt;author&gt;Created by librarian@cadsoft.de&lt;/author&gt;</description>
+<packages>
+</packages>
+<symbols>
+<symbol name="GND">
+<wire x1="-1.905" y1="0" x2="1.905" y2="0" width="0.254" layer="94"/>
+<text x="-2.54" y="-2.54" size="1.778" layer="96">&gt;VALUE</text>
+<pin name="GND" x="0" y="2.54" visible="off" length="short" direction="sup" rot="R270"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="GND" prefix="GND">
+<description>&lt;b&gt;SUPPLY SYMBOL&lt;/b&gt;</description>
+<gates>
+<gate name="1" symbol="GND" x="0" y="0"/>
+</gates>
+<devices>
+<device name="">
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 <attribute name="AUTHOR" value="Brad Campbell"/>
@@ -5222,7 +5280,12 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <parts>
 <part name="FRAME1" library="frames" deviceset="LETTER_L" device=""/>
 <part name="CT1" library="ac" deviceset="CR8348" device="-1000"/>
-<part name="R1" library="rcl" deviceset="R-US_" device="R1210"/>
+<part name="R1" library="rcl" deviceset="R-US_" device="R1210" value="160">
+<attribute name="DIGIKEY" value="P160QCT-ND"/>
+</part>
+<part name="GND1" library="supply1" deviceset="GND" device=""/>
+<part name="J1" library="ac" deviceset="WIRE_HOLE-14AWG" device=""/>
+<part name="J2" library="ac" deviceset="WIRE_HOLE-14AWG" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5232,11 +5295,50 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <instance part="FRAME1" gate="G$1" x="0" y="0"/>
 <instance part="FRAME1" gate="G$2" x="147.32" y="0"/>
 <instance part="CT1" gate="G$1" x="86.36" y="116.84"/>
-<instance part="R1" gate="G$1" x="104.14" y="116.84" rot="R90"/>
+<instance part="R1" gate="G$1" x="104.14" y="116.84" rot="R90">
+<attribute name="DIGIKEY" x="104.14" y="116.84" size="1.27" layer="96" rot="R90" display="off"/>
+</instance>
+<instance part="GND1" gate="1" x="111.76" y="106.68"/>
+<instance part="J1" gate="G$1" x="88.9" y="162.56" rot="MR0"/>
+<instance part="J2" gate="G$1" x="88.9" y="154.94" rot="MR0"/>
 </instances>
 <busses>
 </busses>
 <nets>
+<net name="CURRENT" class="0">
+<segment>
+<pinref part="CT1" gate="G$1" pin="1"/>
+<wire x1="91.44" y1="121.92" x2="104.14" y2="121.92" width="0.1524" layer="91"/>
+<pinref part="R1" gate="G$1" pin="2"/>
+<wire x1="104.14" y1="121.92" x2="111.76" y2="121.92" width="0.1524" layer="91"/>
+<junction x="104.14" y="121.92"/>
+<label x="111.76" y="121.92" size="1.27" layer="95" xref="yes"/>
+</segment>
+</net>
+<net name="GND" class="0">
+<segment>
+<pinref part="CT1" gate="G$1" pin="2"/>
+<wire x1="91.44" y1="111.76" x2="104.14" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="104.14" y1="111.76" x2="111.76" y2="111.76" width="0.1524" layer="91"/>
+<wire x1="111.76" y1="111.76" x2="111.76" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="GND1" gate="1" pin="GND"/>
+<junction x="111.76" y="109.22"/>
+<pinref part="R1" gate="G$1" pin="1"/>
+<junction x="104.14" y="111.76"/>
+</segment>
+</net>
+<net name="PHASE" class="0">
+<segment>
+<pinref part="J2" gate="G$1" pin="P$1"/>
+<wire x1="86.36" y1="154.94" x2="83.82" y2="154.94" width="0.1524" layer="91"/>
+<label x="83.82" y="154.94" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+<segment>
+<pinref part="J1" gate="G$1" pin="P$1"/>
+<wire x1="86.36" y1="162.56" x2="83.82" y2="162.56" width="0.1524" layer="91"/>
+<label x="83.82" y="162.56" size="1.27" layer="95" rot="R180" xref="yes"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
